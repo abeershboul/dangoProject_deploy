@@ -7,7 +7,7 @@ WORKDIR /code
 COPY requirements.txt /code/
 RUN pip install -r requirements.txt
 COPY . /code/
-ENTRYPOINT [ "gunicorn", "core.wsgi", "-b", "0.0.0.0:8000"]
+# ENTRYPOINT [ "gunicorn", "core.wsgi", "-b", "0.0.0.0:8000"]
 
 # FROM python:3
 # WORKDIR /app
