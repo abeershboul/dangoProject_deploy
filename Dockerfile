@@ -20,7 +20,7 @@ RUN apt-get update
 
 # install dependencies
 RUN pip install --upgrade pip
-COPY ./requiremnts.txt /app/
+COPY ./requirments.txt /app/
 RUN pip install -r requirments.txt
 
 COPY . /app
