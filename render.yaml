@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: my-django-app
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://postgres_apfl_user:YdTBFT9hLBQwLbbaNKaZs5bOU3A88YNY@dpg-cqo9o65ds78s73bt59ug-a/postgres_apfl
+      - key: SECRET_KEY
+        value: django-insecure-2*q*ex_&_8zz+m%4!^4y$qk)mg9$)gytyr+=2slzq!fjnpl)ff
