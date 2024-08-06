@@ -9,7 +9,7 @@
 # COPY . /code/
 # ENTRYPOINT [ "gunicorn", "core.wsgi", "-b", "0.0.0.0:8000"]
 
-FROM python:3.11.4-slim-bullseye
+FROM python:3
 WORKDIR /app
 
 ENV PYTHONUNBUFFERED 1
