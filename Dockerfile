@@ -7,6 +7,7 @@ WORKDIR /code
 COPY requirements.txt /code/
 RUN pip install -r requirements.txt
 COPY . /code/
+RUN python manage.py collectstatic --noinput
 # ENTRYPOINT [ "gunicorn", "Pet_project.wsgi", "-b", "0.0.0.0:8000"]
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "Pet_project.wsgi:application"]
 
