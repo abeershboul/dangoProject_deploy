@@ -10,6 +10,32 @@ services:
       - "8000:8000"
     depends_on:
       - db
+    environment:
+      - DATABASE_URL=postgresql://postgres_apfl_user:YdTBFT9hLBQwLbbaNKaZs5bOU3A88YNY@dpg-cqo9o65ds78s73bt59ug-a/postgres_apfl
+      - DJANGO_SECRET_KEY=EwNQWQaEhQhiZJmYaqemZvcuBt_S5ZiBEUUkgJKhrB598K2-9Wf1M7EJNnBlP1grzpU
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:
+version: "3.9"
+
+services:
+  web:
+    build: .
+    command: gunicorn Pet_project.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
 
   db:
     image: postgres
