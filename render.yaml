@@ -1,11 +1,22 @@
+databases:
+  - name: petprojectdb
+    plan: free
+    databaseName: pet_project_db
+    user: pet_project_user
+
 services:
   - type: web
-    name: my-django-app
-    env: docker
     plan: free
-    dockerfilePath: ./Dockerfile
+    name: pet_project
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "python -m gunicorn Pet_project.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
       - key: DATABASE_URL
-        value: postgresql://postgres_apfl_user:YdTBFT9hLBQwLbbaNKaZs5bOU3A88YNY@dpg-cqo9o65ds78s73bt59ug-a/postgres_apfl
+        fromDatabase:
+          name: petprojectdb
+          property: connectionString
       - key: SECRET_KEY
-        value: bbba1503af2d5bece63d0b9f704f8259b174879bcb44b9a6360afa71cdc8a29f
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4

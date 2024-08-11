@@ -1,12 +1,8 @@
-# #!/usr/bin/env bash
-# # Exit on error
-# set -o errexit
+#!/usr/bin/env bash
+set -o errexit  # Exit on error
 
-# # Modify this line as needed for your package manager (pip, poetry, etc.)
-# pip install -r requirments.txt
+pip install -r requirements.txt
+python manage.py collectstatic --no-input
 
-# # Convert static asset files
-# python manage.py collectstatic --no-input
-
-# # Apply any outstanding database migrations
-# python manage.py migrate
+python manage.py migrate
+CMD =["gunicorn", "--bind", "0.0.0.0:8000", "Pet_project.wsgi:application"]
