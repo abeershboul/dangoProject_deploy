@@ -230,20 +230,20 @@ WSGI_APPLICATION = 'Pet_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': dj_database_url.config(
-#         # Replace this value with your local database's connection string.
-#         default='postgresql://postgres:postgres@localhost:5432/mysite',
-#         conn_max_age=600
-        
-#     )
-# }
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL'),  # Use the environment variable
+        # Replace this value with your local database's connection string.
+        default='postgresql://postgres:postgres@localhost:5432/Pet_project',
         conn_max_age=600
+        
     )
 }
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=os.getenv('DATABASE_URL'),  # Use the environment variable
+#         conn_max_age=600
+#     )
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
